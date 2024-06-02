@@ -7,17 +7,15 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    //
     public function index()
     {
         $tasks = Task::getAll();
-        return view('task.index', [
-            'tasks' => $tasks
-        ]);
+        return view('admin.task.index', compact('tasks'));
     }
+
     public function show($id)
     {
-        $tasks = Task::getAll();
-        return view('tasks.detail', compact('$tasks'));
+        $task = Task::find($id);
+        return view('task.detail', compact('task'));
     }
 }
